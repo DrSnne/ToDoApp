@@ -121,7 +121,8 @@ function updateLS(deger) {
     items = getitemFromLS();
     items.forEach(function (todo, index) {
         if (todo == deger)
-            items.tasks[index] = input.value
+            console.log(index)
+        items[index] = input.value
     });
     localStorage.setItem("tasks", JSON.stringify(items))
 }
