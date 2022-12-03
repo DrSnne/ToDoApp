@@ -46,11 +46,26 @@ function updateAnItem(e) {
     var targeted = e.target.parentElement.parentElement
 
     if (e.target.className == "bi bi-arrow-90deg-up") {
+        updateLS(targeted.textContent)
         if (confirm("do you wanna update text?")) {
             targeted.innerText = input.value
 
+            const a = document.createElement("a");
+            a.classList = "delete-item float-end";
+            a.setAttribute("href", "#");
+            a.innerHTML = "<i class = 'bi bi-x-circle'></i>";
+
+            const b = document.createElement("a");
+            b.classList = "delete-item float-end";
+            b.setAttribute("href", "#");
+            b.innerHTML = "<i class = 'bi bi-arrow-90deg-up'></i>";
+
+            targeted.appendChild(a);
+            targeted.appendChild(b);
+
+
         }
-        updateLS(targeted.textContent)
+
         input.value = "";
     }
 }
@@ -104,7 +119,7 @@ function deleteItemFromLS(text) {
     items = getitemFromLS();
     items.forEach(function (todo, index) {
         if (todo == text)
-            items.splice(index, 1);
+            items.splice(index, 1)
 
 
     });
@@ -121,8 +136,7 @@ function updateLS(deger) {
     items = getitemFromLS();
     items.forEach(function (todo, index) {
         if (todo == deger)
-            console.log(index)
-        items[index] = input.value
-    });
+            items[index] = input.value;
+    })
     localStorage.setItem("tasks", JSON.stringify(items))
 }
