@@ -105,6 +105,11 @@ function getitemFromLS() {
 }
 function deleteItemFromLS(text) {
     items = localStorage.getItem("tasks")
+    items.forEach(function (todo, index) {
+        if (todo == text) {
+            items.splice(index, 1)
+        }
+    });
     localStorage.setItem("tasks", JSON.stringify(items))
 
 }
