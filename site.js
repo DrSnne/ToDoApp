@@ -49,13 +49,10 @@ function updateAnItem(e) {
         if (confirm("do you wanna update text?")) {
             targeted.innerText = input.value
 
-
         }
-        updateLS(targeted.textContent);
-    };
-
-
-
+        updateLS(targeted.textContent)
+        input.value = "";
+    }
 }
 function addNewItem(e) {
     e.preventDefault();
@@ -104,11 +101,12 @@ function getitemFromLS() {
     return items;
 }
 function deleteItemFromLS(text) {
-    items = localStorage.getItem("tasks")
+    items = getitemFromLS();
     items.forEach(function (todo, index) {
-        if (todo == text) {
-            items.splice(index, 1)
-        }
+        if (todo == text)
+            items.splice(index, 1);
+
+
     });
     localStorage.setItem("tasks", JSON.stringify(items))
 
@@ -122,9 +120,8 @@ function loadFromLS() {
 function updateLS(deger) {
     items = getitemFromLS();
     items.forEach(function (todo, index) {
-        if (todo == deger) {
-            items[index] = input.value
-        }
+        if (todo == deger)
+            items.tasks[index] = input.value
     });
     localStorage.setItem("tasks", JSON.stringify(items))
 }
